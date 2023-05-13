@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+
+<body>
+<h1 th:text="${title}"></h1>
+<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+    <p>Username: <input type="email" th:field="*{username}" required/></p>
+    <p>Password: <input type="password" th:field="*{password}" required/></p>
+    <p><input type="submit" value="Log In"/> <input type="reset" value="Clear"/></p>
+</form>
+<form action="#" th:action="@{/forget_password}" method="get">
+    <p><input type="submit" value="Forgot Password"/></p>
+</form>
+<form action="#" th:action="@{/register}" method="get">
+    <p><input type="submit" value="Register"/></p>
+</form>
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

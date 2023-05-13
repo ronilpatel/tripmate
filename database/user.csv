@@ -1,0 +1,20 @@
+id,firstname,lastname,email,password,birthdate,gender
+1,Harshil,Shah,mail@mail.com,P@ss12,2022-11-19,Male
+2,"Harshil 2","Shah 2",mail1@mail.com,P@ss123,2022-11-20,Male
+3,Harshil,Shah,Username,771c7c0fb9e19c9b6d0755c25ae10a890d9302199741c57b18af716a45219883,2022-12-04,Male
+4,Harshil,Shah,harshil@gmail.com,86d1505766b68b1b3527361fddd86b48b8eda730c51b23083c05d2d8af3ad22d,2022-12-04,Male
+5,Harshil,Shah,harshil@mail.com,86d1505766b68b1b3527361fddd86b48b8eda730c51b23083c05d2d8af3ad22d,2022-12-04,Male
+6,Amanjot,Singh,amanjot.singh@dal.ca,71b31ce2626c244491c9cdfd0b3449d69826e915ff2d0ec36ef27798e7c460b8,1994-01-01,Male
+7,Harshil,Shah,harshil123@mail.com,cd053d4ff3954e7e4111cf871ba5d63e2c7a3e67f8c140c61debffee5c6f19da,2022-12-05,Male
+8,test,test,test@mail.com,771c7c0fb9e19c9b6d0755c25ae10a890d9302199741c57b18af716a45219883,2022-12-06,Male
+9,"Harshil 1","Shah 2",mytest@mail.com,cd053d4ff3954e7e4111cf871ba5d63e2c7a3e67f8c140c61debffee5c6f19da,2022-12-06,Male
+11,"Harshil 1","Shah 2",harshil+1@mail.com,3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d,2022-12-06,Male
+12,Harshias,asdlna,mailajf@mail.com,11734a6dc7e8c087311da7288d2c4cc79f1af5a8bf2c6989ace225aef3bfb0ed,2022-12-29,MAale
+13,name,name,mymail@mail.com,d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1,2022-12-15,Male
+17,Harshil,Shah,sharshil1299@gmail.com,771c7c0fb9e19c9b6d0755c25ae10a890d9302199741c57b18af716a45219883,1999-02-01,Male
+23,Harshil,Sah,sh.harshilshah@gmail.com,771c7c0fb9e19c9b6d0755c25ae10a890d9302199741c57b18af716a45219883,2022-12-02,Male
+24,temp,ggl,tempggl1@gmail.com,771c7c0fb9e19c9b6d0755c25ae10a890d9302199741c57b18af716a45219883,2022-12-16,Male
+25,Harshil,Shah,xifimeg417@randrai.com,b7f92bb745053dfbe5a596ca64ef40e8ab1fdb9369ac4c4f691e0a2e791c8e1f,2022-12-01,Male
+27,Khushi,Shah,khshah2699@gmail.com,1fcff1fe7e601e10bb94291b44e0c531fd855f5c9335805f1f7865b576c21828,2022-12-07,Female
+28,vaishwi,patel,vaishwipatel82110@gmail.com,4c94485e0c21ae6c41ce1dfe7b6bfaceea5ab68e40a2476f50208e526f506080,1999-10-01,female
+29,Ronil,Patel,ronil.patel@dal.ca,454349e422f05297191ead13e21d3db520e5abef52055e4964b82fb213f593a1,1997-11-13,Male

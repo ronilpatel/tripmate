@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="css/tableborder.css">
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <style>
+         .container {
+            border: 3px solid black;
+            padding: 10px;
+            vertical-align: middle;
+         }
+         .price {
+            text-align: center
+         }
+         button {
+            display: block;
+            margin: 0 auto;
+         }
+      </style>
+</head>
+<script type="text/javascript">
+        function fillPaymentAmount(){
+            var ratePerKm = document.getElementById('ratePerKm').innerText * 1;
+            var totalKm   = document.getElementById('totalkminput').value * 1;
+            var totalBillAmount = ratePerKm * totalKm * 1;
+
+            document.getElementById('totalPaymentAmount').value = totalBillAmount;
+            document.getElementById('fillPrice').innerHTML = totalBillAmount + '$ CAD';
+
+            document.getElementById('fillPrice').innerHTML.concat(' CAD$');
+        }
+    </script>
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+
+<table class="round" th:object="${vehicle}">
+    <tr>
+        <th>Id:</th>
+        <td th:text="${vehicle.getId()}"/>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td th:text="${vehicle.getName()}"/>
+    </tr>
+    <tr>
+        <th>Number of Seats:</th>
+        <td th:text="${vehicle.getNumberOfSeats()}"/>
+    </tr>
+    <tr>
+        <th>Registration Number:</th>
+        <td th:text="${vehicle.getRegistrationNumber()}"/>
+    </tr>
+    <tr>
+        <th>Suitable For Long Journey:</th>
+        <td th:text="${vehicle.getIsForLongJourney()}"/>
+    </tr>
+    <tr>
+        <th>Category:</th>
+        <td th:text="${vehicle.getCategoryName()}"/>
+    </tr>
+    <tr>
+        <th>Rate Per Kilometer:</th>
+        <td id="ratePerKm" th:text="${vehicle.getRatePerKm()}"/>
+    </tr>
+    <tr>
+        <th>Description:</th>
+        <td th:text="${vehicle.getDescription()}"/>
+    </tr>
+
+    <tr>
+        <td>
+            <br><br>
+            <form action="#" th:object="${vehicleBookingObj}"
+                  th:action="@{/confirm-booking/{id}(id=${vehicle.getId()})}"
+                  method="post">
+                <label for="trips">Choose Your Trip:</label>
+                <select th:field="${vehicleBookingObj.postId}" id="trips" name="trips">
+                    <th:block th:each="userpost : ${userposts}">
+                        <option th:text="${userpost.title}" th:value="${userpost.id}"/>
+                    </th:block>
+                </select>
+                <p>Booking Start Date : <input type="date" th:field="${vehicleBookingObj.bookingStartDate}" required></p>
+                <p>Booking End Date : <input type="date" th:field="${vehicleBookingObj.bookingEndDate}" required></p>
+                <p>Total Kilometers : <input id="totalkminput" type="number" onchange=fillPaymentAmount() th:field="${vehicleBookingObj.totalKm}" required></p>
+                <input type="hidden" id="totalPaymentAmount" th:field="${vehicleBookingPayment.amount}">
+
+                <div class="container">
+                    <div class="centre-content">
+                        <p class="price">Pay using Credit or Debit card</p>
+                        <h3 class="price" id="fillPrice"></h3>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-number">
+                            <label> Card Number </label>
+                            <input type="number" class="card-number-field" placeholder="###-###-###" required/>
+                        </div>
+                        <br />
+                        <div class="date-number">
+                            <label> Expiry Date </label>
+                            <input type="text" class="date-number-field" placeholder="MM-YYYY" required />
+                        </div>
+                        <br />
+                        <div class="cvv-number">
+                            <label> CVV number </label>
+                            <input type="number" class="cvv-number-field" placeholder="xxx" required />
+                        </div>
+                        <br />
+                        <div class="nameholder-number">
+                            <label> Card Holder name </label>
+                            <input type="text" class="card-name-field" placeholder="Enter your Name" required/>
+                        </div>
+                        <br />
+                    </div>
+                    <button type="submit">Pay & Confirm Booking</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+</table>
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

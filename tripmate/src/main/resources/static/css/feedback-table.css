@@ -1,0 +1,9 @@
+#feedbackTbl tr td, #feedbackTbl tr th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#vehicleTbl tr td, #vehicleTbl tr th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+<head>
+    <title>My Post Requests</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body>
+<p th:text="'Number of Requests: ' + ${requests_count}"/>
+
+<tr th:each="myRequest, iterstat: ${myRequests}">
+    <td><B><span th:text="${iterstat.index}+1 +'. '+ ${myRequest.getPostTitle()}"/></B> post joining request is <B><span
+            th:text="${myRequest.getStatus()}"/> </B> by <B><span
+            th:text="${myRequest.getFirstNameCreator()} +' '+ ${myRequest.getLastNameCreator()}"/></B>
+        <!--  <td th:text="Request for "><br></td>-->
+        <!--  <td th:text=""><br></td>-->
+        <!--  <td th:text="PostId: ${myRequest.getPostId}"><br></td>-->
+        <br>
+        <br>
+</tr>
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

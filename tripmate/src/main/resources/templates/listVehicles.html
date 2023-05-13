@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/tableborder.css">
+    <link rel="stylesheet" href="/css/menubar.css">
+
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+<h2 class="error" th:text="${error}"></h2>
+<table class="round" th:each="vehicle: ${vehicles}">
+    <tr>
+        <th>ID:</th>
+        <td th:text="${vehicle.getId()}"/>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td th:text="${vehicle.getName()}"/>
+    </tr>
+    <tr>
+        <th>Number of Seats:</th>
+        <td th:text="${vehicle.getNumberOfSeats()}"/>
+    </tr>
+    <tr>
+        <th>Registration Number:</th>
+        <td th:text="${vehicle.getRegistrationNumber()}"/>
+    </tr>
+    <tr>
+        <th>Suitable For Long Journey:</th>
+        <td th:text="${vehicle.getIsForLongJourney()}"/>
+    </tr>
+    <tr>
+        <th>Category:</th>
+        <td th:text="${vehicle.getCategoryName()}"/>
+    </tr>
+    <tr>
+        <th>Rate Per Kilometer:</th>
+        <td th:text="${vehicle.getRatePerKm()}"/>
+    </tr>
+    <tr>
+        <th>Description:</th>
+        <td th:text="${vehicle.getDescription()}"/>
+    </tr>
+    <tr>
+        <td>
+            <form action="#" th:action="@{/vehicle/{id}(id=${vehicle.getId()})}" method="get">
+                <button type="submit">Book</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>

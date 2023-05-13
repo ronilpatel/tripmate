@@ -1,0 +1,9 @@
+.round {
+    border-radius: 15px;
+    border: 2px solid purple;
+    padding: 5px;
+}
+
+th, td {
+    border-bottom: 1px solid black;
+}

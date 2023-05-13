@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+
+<form action="#" th:action="@{/updatepost}" th:object="${post}" method="post">
+    <p>Title : <input type="text" th:field="*{title}" th:value="${post.getTitle()}" required></p>
+    <p>Capacity : <input type="number" th:field="*{capacity}" th:value="${post.getCapacity()}" min="5" max="30" required></p>
+    <p>Source : <input type="text" th:field="*{source}" th:value="${post.getSource()}" required></p>
+    <p>Destination : <input type="text" th:field="*{destination}" th:value="${post.getDestination()}" required></p>
+    <p>Start Date : <input type="date" th:field="*{startDate}" th:value="${post.getStartDate()}" required></p>
+    <p>End Date : <input type="date" th:field="*{endDate}" th:value="${post.getEndDate()}" required></p>
+    <p>Min Age : <input type="number" th:field="*{minAge}" th:value="${post.getMinAge()}" min="1" max="100" required></p>
+    <p>Max Age : <input type="number" th:field="*{maxAge}" th:value="${post.getMaxAge()}" min="1" max="100"  required></p>
+    <p>Description : <input type="text" th:field="*{description}" th:value="${post.getDescription()}" required></p>
+    <input type="hidden" th:field="*{id}" th:value="${post.getId()}">
+    <button type="submit">Update</button>
+</form>
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

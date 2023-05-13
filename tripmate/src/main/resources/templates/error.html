@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Error</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1> Error </h1>
+
+
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script>
+        function deleteConfirmationAlert() {
+            return confirm("This post will be deleted permanently.");
+        }
+    </script>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/feedback-table.css">
+</head>
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+
+<table class="round" th:object="${post}">
+    <tr>
+        <th>Title:</th>
+        <td th:text="${post.getTitle()}"/>
+    </tr>
+    <tr>
+        <th>Capacity:</th>
+        <td th:text="${post.getCapacity()}"/>
+    </tr>
+    <tr>
+        <th>Source:</th>
+        <td th:text="${post.getSource()}"/>
+    </tr>
+    <tr>
+        <th>Destination:</th>
+        <td th:text="${post.getDestination()}"/>
+    </tr>
+    <tr>
+        <th>Start Date:</th>
+        <td th:text="${post.getStartDate()}"/>
+    </tr>
+    <tr>
+        <th>End Date:</th>
+        <td th:text="${post.getEndDate()}"/>
+    </tr>
+    <tr>
+        <th>Min Age:</th>
+        <td th:text="${post.getMinAge()}"/>
+    </tr>
+    <tr>
+        <th>Max Age:</th>
+        <td th:text="${post.getMaxAge()}"/>
+    </tr>
+    <tr>
+        <th>Description:</th>
+        <td th:text="${post.getDescription()}"/>
+    </tr>
+    <tr th:if="${isUpdateButtonVisible}">
+        <td>
+            <form action="#" th:action="@{/editpost/{id}(id=${post.getId()})}" method="get">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/deletepost/{id}(id=${post.getId()})}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/hidepost/{id}(id=${post.getId()})}" method="post">
+                <button type="submit">Hide</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${isFeedbackButtonVisible}">
+        <td>
+            <form action="#" th:action="@{/feedback/{id}(id=${post.getId()})}" method="get">
+                <button type="submit">Give Feedback</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${canJoin}">
+        <td>
+            <form action="#" th:action="@{/join/{id}(id=${post.getId()})}" method="post">
+                <button type="submit">Request to join</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h2 th:if="${vehicles.size() != 0}">Vehicles booked this post</h2>
+<table th:if="${vehicles.size() != 0}" id="vehicleTbl">
+    <tr>
+        <th>Vehicle Id</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Paid?</th>
+        <th>Total KMs</th>
+    </tr>
+    <tr th:each="vehicle: ${vehicles}">
+        <td th:text="${vehicle.getId()}"/>
+        <td th:text="${vehicle.getBookingStartDate()}"/>
+        <td th:text="${vehicle.getBookingEndDate}"/>
+        <td th:text="${vehicle.getHasPaid}"/>
+        <td th:text="${vehicle.getTotalKm}"/>
+    </tr>
+</table>
+
+
+<h2 th:if="${feedbacks.size() != 0}">Vehicle Bookings on this post</h2>
+<table th:if="${feedbacks.size() != 0}" id="feedbackTbl">
+    <tr>
+        <th>Rating</th>
+        <th>Feedback</th>
+    </tr>
+    <tr th:each="feedback: ${feedbacks}">
+        <td th:text="${feedback.rating}"/>
+        <td th:text="${feedback.feedback}"/>
+    </tr>
+</table>
+
+
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>

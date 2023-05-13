@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script>
+        function deleteConfirmationAlert() {
+            return confirm("This post will be deleted permanently.");
+        }
+    </script>
+    <link rel="stylesheet" href="/css/menubar.css">
+    <link rel="stylesheet" href="/css/error.css">
+    <link rel="stylesheet" href="/css/feedback-table.css">
+</head>
+<body>
+<div th:replace="../fragments/menubar :: menubar"></div>
+<h1 th:text="${title}"></h1>
+
+<table th:if="${vehicleBookingTransactions.size() != 0}" id="vehicleTbl">
+    <tr>
+        <th>Payment Id</th>
+        <th>Vehicle Booking Id</th>
+        <th>Amount</th>
+        <th>Payment Date</th>
+    </tr>
+    <tr th:each="booking: ${vehicleBookingTransactions}">
+        <td th:text="${booking.getPaymentId()}"/>
+        <td th:text="${booking.getVehicleBookingId()}"/>
+        <td th:text="${booking.getAmount()}"/>
+        <td th:text="${booking.getCreatedOn}"/>
+    </tr>
+</table>
+
+<h2 class="error" th:text="${error}"></h2>
+</body>
+</html>
